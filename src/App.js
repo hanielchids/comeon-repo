@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Home from "./containers/Home/Home";
+import Login from "./containers/Login/Login";
+import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let user = sessionStorage.getItem("username");
+    if (user === "" || user === null) {
+      navigate("/login");
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ToastContainer theme="colored" position="top-center" />
+      <Routes>
+        <Route index path="/login" element={<Login />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
