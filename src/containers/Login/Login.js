@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
-import {
-  Container,
-  Grid,
-  Input,
-  Form,
-  Segment,
-  Button,
-} from "semantic-ui-react";
+import { Container, Grid, Form, Button } from "semantic-ui-react";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -41,12 +34,9 @@ const Login = () => {
         }),
       })
         .then((res) => {
-          console.log("json response is: ", res);
           return res.json();
         })
         .then((resp) => {
-          console.log("response is: ", resp);
-
           if (Object.keys(resp).length === 0) {
             toast.error("Please Enter valid credentials");
           } else if (resp.status === "success") {
