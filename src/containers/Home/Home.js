@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Games from "../../components/Games/Games";
 import { Image, Menu } from "semantic-ui-react";
 import logo from "../../images/logo.svg";
-import "./Login.css";
 
 const Home = () => {
   const username = sessionStorage.getItem("username");
@@ -26,7 +25,6 @@ const Home = () => {
         }),
       })
         .then((res) => {
-          console.log(res.json);
           navigate("/login");
           return res.json();
         })
@@ -67,7 +65,8 @@ const Home = () => {
           <Image src={logo} style={{ height: 50 }} centered />
         </Menu.Item>
         <Menu.Item style={{ color: "white", fontSize: "20px" }}>
-          <Image src={avatar} alt="" /> Welcome, {fullname}
+          <Image src={avatar} style={{ height: 45 }} alt="" />{" "}
+          <span style={{ marginLeft: 10 }}>Welcome, {fullname}</span>
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item
