@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Games from "../../components/Games/Games";
 import { Image, Menu } from "semantic-ui-react";
-import logo from "../../images/logo.svg";
 
 const Home = () => {
   const username = sessionStorage.getItem("username");
@@ -62,7 +61,7 @@ const Home = () => {
     <div>
       <Menu stackable style={{ backgroundColor: "#585858" }}>
         <Menu.Item>
-          <Image src={logo} style={{ height: 50 }} centered />
+          <Image src="images/logo.svg" style={{ height: 50 }} centered />
         </Menu.Item>
         <Menu.Item style={{ color: "white", fontSize: "20px" }}>
           <Image src={avatar} style={{ height: 45 }} alt="" />{" "}
