@@ -24,33 +24,52 @@ const Login = () => {
 
   const ProceedLoginusingAPI = (e) => {
     e.preventDefault();
-    if (username.length > 0) {
-      fetch("http://localhost:3001/login", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      })
-        .then((res) => {
-          return res.json();
+
+    if (validate) {
+      if (username.length > 0) {
+        fetch("http://localhost:3001/login", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
         })
-        .then((resp) => {
-          if (Object.keys(resp).length === 0) {
-            toast.error("Please Enter valid credentials");
-          } else if (resp.status === "success") {
-            sessionStorage.setItem("username", username);
-            navigate("/");
-          } else {
-            toast.error("Incorrect username/password");
-            setPassword("");
-          }
-        })
-        .catch((err) => {
-          toast.error("Login Failed due to :" + err.message);
-        });
+          .then((res) => {
+            return res.json();
+          })
+          .then((resp) => {
+            if (Object.keys(resp).length === 0) {
+              toast.error("Please Enter valid credentials");
+            } else if (resp.status === "success") {
+              sessionStorage.setItem("username", username);
+              navigate("/");
+            } else {
+              toast.error("Incorrect username/password");
+              setPassword("");
+            }
+          })
+          .catch((err) => {
+            toast.error("Login Failed due to :" + err.message);
+          });
+      }
     }
+  };
+
+  // simple validation
+  // Would be nice to implement yup and formik to this and add security with secure passwords
+
+  const validate = () => {
+    let result = true;
+    if (username === "" || username === null) {
+      result = false;
+      toast.warning("Please Enter Username");
+    }
+    if (password === "" || password === null) {
+      result = false;
+      toast.warning("Please Enter Password");
+    }
+    return result;
   };
 
   return (
