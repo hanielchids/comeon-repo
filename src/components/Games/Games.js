@@ -59,14 +59,13 @@ const Games = () => {
     const left = window.screen.width / 2 - width / 2;
     const top = window.screen.height / 2 - height / 2;
 
+    // api had deprecated methods
     if (gameCode.length > 0) {
       const url = `https://comeon-static-test.casinomodule.com/games/${gameCode}_mobile_html/game/${gameCode}_mobile_html.xhtml?server=https%3A%2F%2Fcomeon-game-test.casinomodule.com%2F&lang=sv&sessId=DEMO-41e133d5237c402-EUR&gameId=${gameCode}_not_mobile_sw&operatorId=default&staticsharedurl=http%3A%2F%2Fstatic-shared.casinomodule.com%2Fgameclient_html%2Fdevicedetection%2Fcurrent`;
       window.open(
         url,
         `width=${width},height=${height},left=${left},top=${top}`
       );
-
-      console.log("link is ", url);
     }
   };
 
