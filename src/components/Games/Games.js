@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
-  Card,
   Container,
   Grid,
   Icon,
-  Image,
   Input,
   Item,
   Label,
