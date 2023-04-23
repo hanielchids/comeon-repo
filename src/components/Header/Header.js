@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Segment, Image } from "semantic-ui-react";
+import { Container, Image } from "semantic-ui-react";
 import logo from "../../images/logo.svg";
 
 const Header = () => {
